@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<!-- 
+Mario Kart World-Randomizer
+Geschrieben von LuckwurstJoe am 16.06.2025
+ -->
+<html lang="de">
+  <head>
+    <title>LuckwurstJoes MKW-Randomizer</title>
+	<style>
+	body {
+	font-family: arial;
+	font-size: 24px;
+	font-weight: bold;
+	color: white;
+	text-shadow: 3px  3px 3px black,
+                  3px -3px 3px black,
+                 -3px  3px 3px black,
+                 -3px -3px 3px black;
+	}
+	.loading-position 
+	{
+      margin-top: 100px;
+    }
+	</style>
+	<script>
+	
+const driver = [
+  {src: 'images/driver/Baby_Daisy.png', name: 'Baby Daisy'},
+  {src: 'images/driver/Baby_Luigi.png', name: 'Baby Luigi'},
+  {src: 'images/driver/Baby_Mario.png', name: 'Baby Mario'},
+  {src: 'images/driver/Baby_Peach.png', name: 'Baby Peach'},
+  {src: 'images/driver/Baby_Rosalina.png', name: 'Baby Rosalina'},
+  {src: 'images/driver/Birdo.png', name: 'Birdo'},
+  {src: 'images/driver/Bowser.png', name: 'Bowser'},
+  {src: 'images/driver/BowserJr.png', name: 'Bowser Jr.'},
+  {src: 'images/driver/BuuHuu.png', name: 'Koenig Buu Huu'},
+  {src: 'images/driver/CheepCheep.png', name: 'Cheep-Cheep'},
+  {src: 'images/driver/Daisy.png', name: 'Daisy'},
+  {src: 'images/driver/Delfin.png', name: 'Delfin'},
+  {src: 'images/driver/DK.png', name: 'Donkey Kong'},
+  {src: 'images/driver/Flappflapp.png', name: 'Flappflapp'},
+  {src: 'images/driver/Football_Chuck.png', name: 'Football-Chuck'},
+  {src: 'images/driver/Gumba.png', name: 'Gumba'},
+  {src: 'images/driver/Hammerbruder.png', name: 'Hammer-Bruder'},
+  {src: 'images/driver/Kataquax.png', name: 'Kataquax'},
+  {src: 'images/driver/Knochentrocken.png', name: 'Knochentrocken'},
+  {src: 'images/driver/Koopa.png', name: 'Koopa'},
+  {src: 'images/driver/Krabbe.png', name: 'Krabbe'},
+  {src: 'images/driver/Kroetsus.png', name: 'Kroetsus'},
+  {src: 'images/driver/Kuh.png', name: 'Kuh'},
+  {src: 'images/driver/Lakitu.png', name: 'Lakitu'},
+  {src: 'images/driver/Luigi.png', name: 'Luigi'},
+  {src: 'images/driver/Mario.png', name: 'Mario'},
+  {src: 'images/driver/Monty.png', name: 'Monty Maulwurf'},
+  {src: 'images/driver/Mopsie.png', name: 'Mopsie'},
+  {src: 'images/driver/Palma.png', name: 'Palma'},
+  {src: 'images/driver/Parapuenktchen.png', name: 'Parapuenktchen'},
+  {src: 'images/driver/Pauline.png', name: 'Pauline'},
+  {src: 'images/driver/Peach.png', name: 'Peach'},
+  {src: 'images/driver/Pickondor.png', name: 'Pickondor'},
+  {src: 'images/driver/Pinguin.png', name: 'Pinguin'},
+  {src: 'images/driver/Piranha.png', name: 'Piranha-Pflanze'},
+  {src: 'images/driver/Pokey.png', name: 'Pokey'},
+  {src: 'images/driver/Rocky.png', name: 'Rocky Schraubschluessel'},
+  {src: 'images/driver/Rosalina.png', name: 'Rosalina'},
+  {src: 'images/driver/Schneemann.png', name: 'Schneemann'},
+  {src: 'images/driver/ShyGuy.png', name: 'Shy Guy'},
+  {src: 'images/driver/Skelettfisch.png', name: 'Skelettfisch'},
+  {src: 'images/driver/Spike.png', name: 'Spike'},
+  {src: 'images/driver/Spukmatz.png', name: 'Spukmatz'},
+  {src: 'images/driver/Summser.png', name: 'Summser'},
+  {src: 'images/driver/Toad.png', name: 'Toad'},
+  {src: 'images/driver/Toadette.png', name: 'Toadette'},
+  {src: 'images/driver/Waluigi.png', name: 'Waluigi'},
+  {src: 'images/driver/Wario.png', name: 'Wario'},
+  {src: 'images/driver/Wiggler.png', name: 'Wiggler'},
+  {src: 'images/driver/Yoshi.png', name: 'Yoshi'},
+];
+
+const vehicle = [
+  {src: 'images/vehicle/BabyBlooper.png', name: 'Baby-Blooper'},
+  {src: 'images/vehicle/Bienenmobil.png', name: 'Bienenmobil'},
+  {src: 'images/vehicle/Bolide.png', name: 'Bolide'},
+  {src: 'images/vehicle/BowserBuggy.png', name: 'Bowser-Buggy'},
+  {src: 'images/vehicle/Dampfmaschine.png', name: 'Dampfmaschine'},
+  {src: 'images/vehicle/DorrieTrike.png', name: 'Dorrie-Trike'},
+  {src: 'images/vehicle/Feuerflitzer.png', name: 'Feuerflitzer'},
+  {src: 'images/vehicle/Flammenschlitten.png', name: 'Flammenschlitten'},
+  {src: 'images/vehicle/Flippster.png', name: 'Flippster'},
+  {src: 'images/vehicle/FootballTruck.png', name: 'Football-Truck'},
+  {src: 'images/vehicle/GoKart.png', name: 'Go-Kart'},
+  {src: 'images/vehicle/GruenerHuepfer.png', name: 'Gruener Huepfer'},
+  {src: 'images/vehicle/Kettentrike.png', name: 'Kettentrike'},
+  {src: 'images/vehicle/Kipperkart.png', name: 'Kipperkart'},
+  {src: 'images/vehicle/KoiChopper.png', name: 'Koi-Chopper'},
+  {src: 'images/vehicle/MachRakete.png', name: 'Mach-Rakete'},
+  {src: 'images/vehicle/Monztruck.png', name: 'Monztruck'},
+  {src: 'images/vehicle/Nobelkarosse.png', name: 'Nobelkarosse'},
+  {src: 'images/vehicle/PeppigerScooter.png', name: 'Peppiger Scooter'},
+  {src: 'images/vehicle/Plueschbuggy.png', name: 'Plueschbuggy'},
+  {src: 'images/vehicle/PuenktchenKart.png', name: 'Puenktchen-Kart'},
+  {src: 'images/vehicle/Radiorenner.png', name: 'Radiorenner'},
+  {src: 'images/vehicle/RallyeBike.png', name: 'Rallye-Bike'},
+  {src: 'images/vehicle/RallyeKart.png', name: 'Rallye-Kart'},
+  {src: 'images/vehicle/RennbahnRakete.png', name: 'Rennbahn-Rakete'},
+  {src: 'images/vehicle/ROBBIKE.png', name: 'R.O.B.-B.I.K.E.'},
+  {src: 'images/vehicle/RoboTrike.png', name: 'Robo-Trike'},
+  {src: 'images/vehicle/Roehrenroller.png', name: 'Roehrenroller'},
+  {src: 'images/vehicle/RoyalerRenner.png', name: 'Royaler Renner'},
+  {src: 'images/vehicle/Scherensprinter.png', name: 'Scherensprinter'},
+  {src: 'images/vehicle/StandardBike.png', name: 'Standard-Bike'},
+  {src: 'images/vehicle/StandardKart.png', name: 'Standard-Kart'},
+  {src: 'images/vehicle/Sternschnuppe.png', name: 'Sternschnuppe'},
+  {src: 'images/vehicle/Teppichmobil.png', name: 'Teppichmobil'},
+  {src: 'images/vehicle/TrekkerKart.png', name: 'Trekker-Kart'},
+  {src: 'images/vehicle/Trikroko.png', name: 'Trikroko'},
+  {src: 'images/vehicle/Wagenwilli.png', name: 'Wagenwilli'},
+  {src: 'images/vehicle/WChopper.png', name: 'W-Chopper'},
+  {src: 'images/vehicle/Wolkenwagen.png', name: 'Wolkenwagen'},
+  {src: 'images/vehicle/Wuestenflitzer.png', name: 'Wuestenflitzer'},
+];
+
+function mixItUp() {
+  const driverImg = document.getElementById('driver');
+  const driverName = document.getElementById('driver-name');
+  const vehicleImg = document.getElementById('vehicle');
+  const vehicleName = document.getElementById('vehicle-name');
+
+  const randomDriver = driver[Math.floor(Math.random() * driver.length)];
+  const randomVehicle = vehicle[Math.floor(Math.random() * vehicle.length)];
+
+  driverImg.src = randomDriver.src;
+  driverName.innerText = randomDriver.name;
+  vehicleImg.src = randomVehicle.src;
+  vehicleName.innerText = randomVehicle.name;
+};
+
+window.onload = function() {
+  const driverImg = document.getElementById('driver');
+  const vehicleImg = document.getElementById('vehicle');
+  const container = document.getElementById('container');
+
+  // Ladeanimation anzeigen + tiefere Position
+  driverImg.src = 'images/loading.webp';
+  vehicleImg.src = 'images/loading.webp';
+  container.classList.add('loading-position');
+
+  setTimeout(function() {
+    mixItUp();
+    
+    // Ladeposition wieder entfernen
+    container.classList.remove('loading-position');
+
+    const mixButton = document.getElementById('mix-button');
+    if (mixButton) {
+      mixButton.addEventListener('click', mixItUp);
+    }
+  }, 2500);
+};
+	</script>
+  </head>
+<body>
+
+<div id="container">
+<table border=0>
+  <tr>
+    <td width="250px" height="50px" align="center"><img src="" alt="Fahrer" id="driver"></td>
+	<td width="300px" height="50px" align="center"><img src="" alt="Fahrzeug" id="vehicle"></td>
+  </tr>
+  <tr>
+	<td width="250px" height="30px" align="center"><span id="driver-name"></span></td>
+	<td width="250px" height="30px" align="center"><span id="vehicle-name"></span></td>
+  </tr>
+</table>
+</div>
+
+<!-- <button id="mix-button">Randomize it!</button -->
+  </body>
+</html>
